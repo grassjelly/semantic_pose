@@ -16,25 +16,25 @@ Each area in the map can be labeled by defining the vertices of the boundary(pol
 
     places:
     - name: "place1"
-      position: [[-5.01995038986, 0.341648638248], [ -5.02670955658,-2.89252948761], [-6.98518037796, -2.95654678345], [-7.06083536148, 0.271802127361]]
+      boundary: [[-5.01995038986, 0.341648638248], [ -5.02670955658,-2.89252948761], [-6.98518037796, -2.95654678345], [-7.06083536148, 0.271802127361]]
 
     - name: "place2"
-      position: [[-7.01539182663, 0.339973062277],[-1.44279897213 ,0.283673077822],[ 4.77711629868,6.89892435074],[4.77711677551 ,9.23537540436],[-5.74889469147 ,9.23537540436],[ -8.45075798035,6.56112480164]]
+      boundary: [[-7.01539182663, 0.339973062277],[-1.44279897213 ,0.283673077822],[ 4.77711629868,6.89892435074],[4.77711677551 ,9.23537540436],[-5.74889469147 ,9.23537540436],[ -8.45075798035,6.56112480164]]
 
     - name: "place3"
-      position: [[4.73916625977,6.79155063629],[4.66398239136,3.70972466469],[2.89470362663,1.91181647778]]
+      boundary: [[4.73916625977,6.79155063629],[4.66398239136,3.70972466469],[2.89470362663,1.91181647778]]
 
 
 
-Each label consists of two paremeters:
+Each label consists of two parameters:
 
-'name' - The name of the area (ie. kitchen).
+'name' - Arbitrary name of an area (ie. kitchen).
 
-'position' - The boundary's array of vertices.
+'boundary' - Array of vertices of a polygon to represent the boundary of an area.
 
 You can grab the vertices by using 'Publish Point' in Rviz and subscribing to '/clicked_point'. You can do this in a clockwise or an anti-clockwise manner.
 
-Take note that the number of places and vertices in a boundary is arbitrary.
+Take note that the number of places and vertices in a boundary is also arbitrary.
 
 ## Package Configuration
 

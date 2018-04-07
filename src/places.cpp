@@ -19,7 +19,7 @@ Places::Places(ros::NodeHandle & nh, ros::NodeHandle & nh_priv,
         std::vector<geometry_msgs::Point> pos;
 
         xh::getArrayItem(output, i, output_i);
-        xh::getStructMember(output_i, "position", pos_list);
+        xh::getStructMember(output_i, "boundary", pos_list);
         xh::getStructMember(output_i, "name", name_list);
 
         for(int j=0; j < pos_list.size(); ++j)
@@ -32,7 +32,7 @@ Places::Places(ros::NodeHandle & nh, ros::NodeHandle & nh_priv,
             pos.push_back(pt);
         }
 
-        positions_.push_back(pos);
+        boundary_.push_back(pos);
         places_.push_back(name_list);
     }
 }
@@ -42,9 +42,9 @@ std::vector<std::string> Places::getPlaces()
     return places_;
 }
 
-std::vector<std::vector<geometry_msgs::Point> > Places::getPositions()
+std::vector<std::vector<geometry_msgs::Point> > Places::getBoundary()
 {
-    return positions_;
+    return boundary_;
 }
 
 std::string Places::where_am_i(geometry_msgs::Point pt)
@@ -52,21 +52,21 @@ std::string Places::where_am_i(geometry_msgs::Point pt)
     typedef boost::geometry::model::d2::point_xy<double> point_type;
     typedef boost::geometry::model::polygon<point_type> polygon_type;
 
-    for(int i = 0; i < positions_.size() ; i++)
+    for(int i = 0; i < boundary_.size() ; i++)
     {
         std::string polygon = "POLYGON((";
 
-        for(int j=0; j < positions_[i].size(); j++)
+        for(int j=0; j < boundary_[i].size(); j++)
         {
-            polygon.append(std::to_string(positions_[i][j].y));
+            polygon.append(std::to_string(boundary_[i][j].y));
             polygon.append(" ");
-            polygon.append(std::to_string(positions_[i][j].x));
+            polygon.append(std::to_string(boundary_[i][j].x));
             polygon.append(",");
         }
 
-        polygon.append(std::to_string(positions_[i][0].y));
+        polygon.append(std::to_string(boundary_[i][0].y));
         polygon.append(" ");
-        polygon.append(std::to_string(positions_[i][0].x));
+        polygon.append(std::to_string(boundary_[i][0].x));
         polygon.append("))");
 
         polygon_type poly;

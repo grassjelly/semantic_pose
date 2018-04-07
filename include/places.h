@@ -10,12 +10,12 @@ class Places
     public:
         Places(ros::NodeHandle& nh, ros::NodeHandle& nh_priv, const std::string& param_name);
         std::vector<std::string> getPlaces();
-        std::vector<std::vector<geometry_msgs::Point> > getPositions();
+        std::vector<std::vector<geometry_msgs::Point> > getBoundary();
         std::string where_am_i(geometry_msgs::Point pt);
 
     private:
         std::vector<std::string> places_;
-        std::vector<std::vector<geometry_msgs::Point> > positions_;
+        std::vector<std::vector<geometry_msgs::Point> > boundary_;
 };
 
 #endif
