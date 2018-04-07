@@ -76,8 +76,6 @@ std::string Places::where_am_i(geometry_msgs::Point pt)
 
         if(boost::geometry::within(p, poly))
             return places_[i];
-
-        else 
-            return "";
     }
+    return "";
 }
